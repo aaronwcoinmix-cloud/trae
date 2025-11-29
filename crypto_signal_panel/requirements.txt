@@ -1,0 +1,14 @@
+# Core runtime
+streamlit==1.39.0
+pyyaml==6.0.2
+numpy==2.0.2
+pandas==2.2.2
+pandas_ta
+
+# Exchanges / websockets
+ccxt==4.3.77
+# ccxt.pro is商业版，若有许可证请安装官方提供版本
+websockets==12.0
+
+# Notifications
+plyer==2.1.0

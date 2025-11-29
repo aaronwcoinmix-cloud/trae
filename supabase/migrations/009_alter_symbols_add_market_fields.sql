@@ -1,0 +1,14 @@
+-- 添加市场数据字段到 symbols 表，支持实时行情与算法分析
+ALTER TABLE symbols
+  ADD COLUMN IF NOT EXISTS current_price DOUBLE PRECISION,
+  ADD COLUMN IF NOT EXISTS price_change_24h DOUBLE PRECISION,
+  ADD COLUMN IF NOT EXISTS price_change_percent_24h DOUBLE PRECISION,
+  ADD COLUMN IF NOT EXISTS volume_24h DOUBLE PRECISION,
+  ADD COLUMN IF NOT EXISTS high_24h DOUBLE PRECISION,
+  ADD COLUMN IF NOT EXISTS low_24h DOUBLE PRECISION,
+  ADD COLUMN IF NOT EXISTS open_price_24h DOUBLE PRECISION,
+  ADD COLUMN IF NOT EXISTS last_updated TIMESTAMPTZ;
+
+-- 索引以便按更新时间与成交量排序
+CREATE INDEX IF NOT EXISTS idx_symbols_last_updated ON symbols(last_updated DESC);
+CREATE INDEX IF NOT EXISTS idx_symbols_volume_24h ON symbols(volume_24h DESC);

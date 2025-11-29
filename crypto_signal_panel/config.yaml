@@ -1,0 +1,31 @@
+# 运行配置示例（请根据需要修改并放置在项目根目录或本目录）
+exchange:
+  name: binance
+  type: both  # options: spot, futures, both
+  api_key: "YOUR_BINANCE_API_KEY"
+  secret: "YOUR_BINANCE_API_SECRET"
+  enable_testnet: false
+  use_ccxt_pro: true
+
+symbols:
+  whitelist:
+    - BTC/USDT
+    - ETH/USDT
+    - SOL/USDT
+    - BNB/USDT
+  blacklist: []
+
+timeframes:
+  - 15m
+  - 30m
+  - 1h
+
+panel:
+  history_limit: 50
+  play_sound: true
+  desktop_notify: true
+  refresh_seconds: 2
+
+performance:
+  max_symbols: 200
+  max_ccxt_ws_connections: 50
