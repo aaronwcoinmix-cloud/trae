@@ -1,5 +1,22 @@
 import axios from 'axios';
-import { Symbol } from '../../../shared/types';
+// 定义本地 Symbol 接口，避免从缺失的共享模块导入
+interface Symbol {
+  id: string;
+  symbol: string;
+  base_asset: string;
+  quote_asset: string;
+  contract_type: string;
+  status: string;
+  is_active: boolean;
+  current_price: number;
+  price_change_24h: number;
+  price_change_percent_24h: number;
+  volume_24h: number;
+  high_24h: number;
+  low_24h: number;
+  open_price_24h: number;
+  last_updated: string;
+}
 import WebSocket from 'ws';
 
 interface BinanceTickerData {
@@ -518,8 +535,8 @@ export class BinanceService {
 
 // 创建单例实例
 export const binanceService = new BinanceService(
-  process.env.BINANCE_API_KEY,
-  process.env.BINANCE_SECRET_KEY
+  process.env['BINANCE_API_KEY'] || '',
+  process.env['BINANCE_SECRET_KEY'] || ''
 );
 
 export default binanceService;
